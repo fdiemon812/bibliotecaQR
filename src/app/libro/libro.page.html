@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <ion-title> <ion-icon routerLink="/biblioteca" name="arrow-back-outline"></ion-icon> {{titulo}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+
+    <img width="100%" height="400px" src="https://covers.openlibrary.org/b/isbn/{{isbn}}.jpg">
+  
+    <ion-card-content>
+      <ion-text><b>{{titulo}}</b></ion-text> <br>
+      <ion-text><b>Autor:</b>{{autor}}</ion-text><br>
+      <ion-text><b>Año:</b>{{year}}</ion-text><br>
+      <ion-text><b>ISBN:</b>{{isbn}}</ion-text><br>
+
+      <ion-text><b>Editorial:</b>{{editorial}}</ion-text>
+
+    </ion-card-content>
+  </ion-card>
+  
+ 
+</ion-content>

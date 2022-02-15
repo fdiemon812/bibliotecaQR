@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Autor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Información </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Gran colección de libros para todos!! Disfruta de todos los titulos del momento. 
+      La historia de la biblioteca es una subdisciplina dentro de la ciencia de la
+       biblioteca y la ciencia de la información y la biblioteca que se centra en 
+       la historia de las bibliotecas y su papel en las sociedades y culturas. Algu
+       nos ven el campo como un subconjunto del historial de información.
+    </ion-card-content>
+    <ion-item href="curriculum" class="ion-activated">
+      <ion-icon name="book" slot="start"></ion-icon>
+      <ion-label>Curriculum vitae </ion-label>
+    </ion-item>
+    <ion-item href="mailto:gmail@gmail.com" class="ion-activated">
+      <ion-icon name="mail" slot="start"></ion-icon>
+      <ion-label><b>Correo:</b> hola@hola.com</ion-label>
+    </ion-item>
+    <ion-item href="https://twitter.com" class="ion-activated">
+      <ion-icon name="logo-twitter" slot="start"></ion-icon>
+      <ion-label><b>Twitter:</b> @Twiter</ion-label>
+    </ion-item>
+    <ion-item (click)="callNumber('666666666')" class="ion-activated">
+      <ion-icon name="call" slot="start"></ion-icon>
+      <ion-label><b>Teléfono:</b> 666666666</ion-label>
+    </ion-item>
+
+  </ion-card>
+</ion-content>

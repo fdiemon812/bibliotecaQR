@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-icon routerLink="/home" name="arrow-back-outline"></ion-icon> Biblioteca</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   
+  <ion-toolbar>
+
+    <ion-searchbar [(ngModel)]="busqueda" placeholder="Introduzca titulo" type="string" debounce="3000" (ionInput)="obtenerLibros()" ></ion-searchbar>
+    <ion-button fill="clear"  (click)="scanBRcode()"><ion-icon slot="icon-only" name="barcode" color="dark" style="zoom:2.0;"></ion-icon></ion-button>
+
+
+  </ion-toolbar>
+
+  <ion-item *ngFor="let libro of libros"  button (click)="getLibro(libro.isbn[0])" >
+    <ion-thumbnail >
+      <img src="https://covers.openlibrary.org/b/isbn/{{libro.isbn[0]}}.jpg">
+    </ion-thumbnail>
+    <ion-label style="margin-left: 2%;" >
+      <ion-text color="dark">
+        <h2><b>{{libro.title}}</b></h2>
+      </ion-text>
+      <ion-text color="medium">
+        <p>Autor: {{libro.author_name}}</p>
+      </ion-text>
+      ion
+      <ion-text color="medium">
+        <p>Año: {{libro.first_publish_year}}</p>
+      </ion-text>
+        <ion-icon name="ios-information-circle-outline"></ion-icon>
+    
+    </ion-label>
+    <ion-icon  name="person"></ion-icon>
+  </ion-item>
+
+
+  
+ 
+</ion-content>

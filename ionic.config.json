@@ -1,0 +1,8 @@
+{
+  "name": "biblioteca3",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}
