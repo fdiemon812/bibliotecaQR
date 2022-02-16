@@ -20,6 +20,7 @@ export class BibliotecaPage implements OnInit {
   scannedBarCode: {};
   barcodeScannerOptions: BarcodeScannerOptions;
 
+  arrayIsbn=[];
 
   constructor(private bibliotecaService:BibliotecaService, public router:Router, private scan: BarcodeScanner) { }
 
@@ -52,6 +53,19 @@ export class BibliotecaPage implements OnInit {
       }).catch(err => {
         alert(err);
       });
+  }
+
+
+  addFav(isbn:string){
+    this.arrayIsbn.push(isbn)
+  }
+
+  compruebaFav(isbn){
+    if(this.arrayIsbn.indexOf(isbn)==1){
+      return true;
+    }
+
+    return false;
   }
 
 }

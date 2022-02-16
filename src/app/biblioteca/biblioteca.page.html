@@ -14,9 +14,21 @@
 
   </ion-toolbar>
 
-  <ion-item *ngFor="let libro of libros"  button (click)="getLibro(libro.isbn[0])" >
-    <ion-thumbnail >
-      <img src="https://covers.openlibrary.org/b/isbn/{{libro.isbn[0]}}.jpg">
+  <ion-card>
+    <div *ngIf="scannedBarCode">
+        <ion-item>
+            Scanned code output: <strong>{{ scannedBarCode["text"] }}</strong>
+        </ion-item>
+        <ion-item>
+            Scanned code output: <strong>{{ scannedBarCode["format"] }}</strong>
+        </ion-item>
+    </div>
+</ion-card>
+
+
+  <ion-item *ngFor="let libro of libros"   >
+    <ion-thumbnail button (click)="getLibro(libro.isbn[0])">
+      <img  src="https://covers.openlibrary.org/b/isbn/{{libro.isbn[0]}}.jpg">
     </ion-thumbnail>
     <ion-label style="margin-left: 2%;" >
       <ion-text color="dark">
@@ -32,8 +44,11 @@
         <ion-icon name="ios-information-circle-outline"></ion-icon>
     
     </ion-label>
-    <ion-icon  name="person"></ion-icon>
+    <ion-icon button *ngIf="!compruebaFav(libro.isbn[0])" (click)="addFav(libro.isbn[0])" name="star-outline"></ion-icon>
+    <ion-icon button *ngIf="compruebaFav(libro.isbn[0])" (click)="addFav(libro.isbn[0])" name="star"></ion-icon>
+
   </ion-item>
+
 
 
   
