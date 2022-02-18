@@ -44,13 +44,10 @@
         <ion-icon name="ios-information-circle-outline"></ion-icon>
     
     </ion-label>
-    <ion-icon button *ngIf="!compruebaFav(libro.isbn[0])" (click)="addFav(libro.isbn[0])" name="star-outline"></ion-icon>
-    <ion-icon button *ngIf="compruebaFav(libro.isbn[0])" (click)="addFav(libro.isbn[0])" name="star"></ion-icon>
+    <ion-icon button  (click)="addFav(libro)" name="star-outline"></ion-icon>
 
   </ion-item>
 
-
-
-  
+ 
  
 </ion-content>

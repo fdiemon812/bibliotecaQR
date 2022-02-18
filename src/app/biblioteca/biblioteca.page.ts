@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Libro } from '../interfaces/libro-interface';
 import { BibliotecaService } from '../services/biblioteca.service';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -20,12 +21,22 @@ export class BibliotecaPage implements OnInit {
   scannedBarCode: {};
   barcodeScannerOptions: BarcodeScannerOptions;
 
-  arrayIsbn=[];
+  arrayLibro:Libro[]=[];
 
-  constructor(private bibliotecaService:BibliotecaService, public router:Router, private scan: BarcodeScanner) { }
 
-  ngOnInit() {}
+  private _storage: Storage | null = null;
 
+  constructor(private storage:Storage, private bibliotecaService:BibliotecaService, public router:Router, private scan: BarcodeScanner) { }
+
+  async ngOnInit() {
+
+    await this.storage.create();
+    this._storage = this.storage;
+  }
+
+
+   public set(key: string, value: any) {
+    this._storage?.set(key, value);}
 
   obtenerLibros():void{
 
@@ -56,16 +67,51 @@ export class BibliotecaPage implements OnInit {
   }
 
 
-  addFav(isbn:string){
-    this.arrayIsbn.push(isbn)
-  }
+  containsLibro(libro:Libro):number{
 
-  compruebaFav(isbn){
-    if(this.arrayIsbn.indexOf(isbn)==1){
-      return true;
+    let respuesta=-1;
+    for (let index = 0; index < this.arrayLibro.length; index++) {
+      
+      const element = this.arrayLibro[index];
+      
+      if(element.isbn==libro.isbn){
+        respuesta= index;
+      }
     }
 
-    return false;
+    return respuesta;
+
+
+
   }
+
+  addFav(libro:Libro) {
+
+    let posicion= this.containsLibro(libro);
+
+   if(posicion==-1){
+
+    this.arrayLibro.push(libro);
+
+   }else{
+
+    this.arrayLibro=this.arrayLibro.splice(posicion,1);
+
+   }
+   this.storage.set('favs', this.arrayLibro)
+   console.log(this.storage.get('favs'))
+
+  }
+
+
+ 
+
+  // compruebaFav(isbn){
+  //   if(this.arrayIsbn.indexOf(isbn)==1){
+  //     return true;
+  //   }
+
+  //   return false;
+  // }
 
 }
