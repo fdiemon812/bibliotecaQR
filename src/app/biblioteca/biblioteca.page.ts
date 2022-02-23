@@ -32,6 +32,12 @@ export class BibliotecaPage implements OnInit {
 
     await this.storage.create();
     this._storage = this.storage;
+    this.storage.get('favs').then(response => {
+      return response; // Devuelve una promesa
+    })
+    .then(data => {
+      this.arrayLibro=data;
+    })
   }
 
 
@@ -92,11 +98,12 @@ export class BibliotecaPage implements OnInit {
    if(posicion==-1){
 
     this.arrayLibro.push(libro);
+    console.log(this.arrayLibro)
 
    }else{
 
-    this.arrayLibro=this.arrayLibro.splice(posicion,1);
-
+    this.arrayLibro.splice(posicion,1);
+    console.log(this.arrayLibro)
    }
    this.storage.set('favs', this.arrayLibro)
    console.log(this.storage.get('favs'))

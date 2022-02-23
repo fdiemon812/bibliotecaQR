@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <ion-title> <ion-icon routerLink="/biblioteca" name="arrow-back-outline"></ion-icon> Favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let libro of libros"   >
+    <ion-thumbnail button >
+      <img  src="https://covers.openlibrary.org/b/isbn/{{libro.isbn[0]}}.jpg">
+    </ion-thumbnail>
+    <ion-label style="margin-left: 2%;" >
+      <ion-text color="dark">
+        <h2><b>{{libro.title}}</b></h2>
+      </ion-text>
+      <ion-text color="medium">
+        <p>Autor: {{libro.author_name}}</p>
+      </ion-text>
+      ion
+      <ion-text color="medium">
+        <p>Año: {{libro.first_publish_year}}</p>
+      </ion-text>
+        <ion-icon name="ios-information-circle-outline"></ion-icon>
+    
+    </ion-label>
+    <ion-icon button   name="star-outline"></ion-icon>
+
+  </ion-item>
+
+  
+ 
+</ion-content>

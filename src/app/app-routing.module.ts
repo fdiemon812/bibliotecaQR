@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'libro/:isbn',
     loadChildren: () => import('./libro/libro.module').then( m => m.LibroPageModule)
+  },
+  {
+    path: 'favoritos',
+    loadChildren: () => import('./favoritos/favoritos.module').then( m => m.FavoritosPageModule)
   }
 ];
 
